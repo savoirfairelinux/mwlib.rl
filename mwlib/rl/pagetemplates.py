@@ -148,12 +148,14 @@ class TitlePage(PageTemplate):
                 footertext.append(
                     pdfstyles.creation_date_txt % time.strftime(
                         pdfstyles.creation_date_format, time.localtime()))
+	    """
             p = Paragraph('<br/>'.join([formatter.cleanText(line, escape=False) for line in footertext]),
                           text_style(mode='footer'))
             w,h = p.wrap(print_width, print_height)
             canvas.translate( (page_width-w)/2.0, footer_margin_vert - h - 0.25*cm)
             p.canv = canvas
             p.draw()
+	    """
         canvas.restoreState()
         if self.cover:
             width, height = self._scale_img(pdfstyles.title_page_image_size, self.cover)
